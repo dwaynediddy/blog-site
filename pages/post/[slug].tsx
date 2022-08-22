@@ -3,13 +3,39 @@ import Header from '../../components/Header'
 import { sanityClient, urlFor } from '../../sanity'
 import { Post } from '../../typings'
 import PortableText from "react-portable-text"
+import { useForm, SubmitHandler } from "react-hook-form";
 
 interface Props {
     post: Post
 }
 
+interface iFormInput {
+    _id: string,
+    name: string,
+    email: string,
+    comment: string
+}
+
 
 function Post({ post }: Props) {
+    const {
+        register, 
+        handleSubmit, 
+        formState: {errors}
+    } = useForm<iFormInput>()
+
+    const onSubmit: SubmitHandler<iFormInput> = (data) => {
+        fetch('/api/createComment', {
+            method: 'POST',
+            body: JSON.stringify(data)
+        }).then(() => {
+            console.log(data)
+
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
   return (
     <main>
         <Header />
@@ -60,6 +86,60 @@ function Post({ post }: Props) {
                     />
                 </div>
         </article>
+        <hr className="max-w-lg my-5 mx-auto border-teal-400" />
+
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col p-10 max-w-2xl mx-auto mb-10">
+            <h2 className="text-sm text-gray-400">Did you enjoy this article?</h2>
+            <h3 className="text-2xl text-teal-400">Leave a comment below!</h3>
+            <hr className="py-3 mt-2 border-gray-400" />
+
+            <input
+                {...register("_id")}
+                type="hidden" 
+                name="_id"
+                value={post._id}
+            />
+
+            <label>
+                <span className="text-gray-400">Name </span>
+                <input 
+                    {...register("name", {required: true})}
+                    type="text" 
+                    className="mb-5 shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-teal-500 focus:ring-2"
+                    placeholder="Enter Name"
+                />
+            </label>
+            <label>
+                <span className="text-gray-400">Email </span>
+                <input 
+                    {...register("email")}
+                    type="email" 
+                    className="mb-5 shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-teal-500 focus:ring-2"
+                    placeholder="Add an Email"
+                />
+            </label>
+            <label>
+                <span>Comment </span>
+                <textarea 
+                    {...register("comment", {required: true})}
+                    rows={8} 
+                    className="shadow border rounded py-2 px-3 form-textarea mt-1 block w-full ring-teal-500 focus:ring-2"
+                    placeholder="Leave a comment"
+                />
+            </label>
+            <div className='flex flex-col p-5'>
+                {errors.name && (
+                    <span className='text-red-500'>The Name Field is required</span>
+                )}
+                {errors.comment && (
+                    <span className='text-red-500'>A Comment is required</span>
+                )}
+            </div>
+            <input 
+                className='bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded cursor-pointer' 
+                type='submit' 
+            />
+        </form>
     </main>
   )
 }
