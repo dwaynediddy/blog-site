@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className='flex justify-between p-5 max-w-7xl mx-auto'>
         <div className='flex item-center space-x-5'>
-            <Link href='/'>
+            <Link href='https://www.linkedin.com/in/dwaynediddy/'>
                 <Image 
                     src={Logo}
                     width={150}
