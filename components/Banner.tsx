@@ -15,7 +15,7 @@ function Banner() {
             <h2>A spoof of Barney 'The Barnicle' Stinsons blogs from HIMYM</h2>
         </div>
         <div className='hidden md:inline-flex h-32 lg:h-full'>
-            <Image src="" layout='fill' alt='' />
+            <Image src="https://tse2.mm.bing.net/th?id=OIP.bZN5HtF8nf_eo2hMdtWPlgHaGr&pid=Api&P=0" layout='fill' alt='' />
         </div>
     </div>
   )

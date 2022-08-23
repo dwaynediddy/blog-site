@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import Logo from './logo.png'
 
 const Header = () => {
   return (
@@ -7,7 +8,8 @@ const Header = () => {
         <div className='flex item-center space-x-5'>
             <Link href='/'>
                 <Image 
-                    src='/'
+                    src={Logo}
+                    layout='fill'
                     className='w-44 object-contain cursor-pointer'
                     alt=''
                 />
