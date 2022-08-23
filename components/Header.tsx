@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 
 const Header = () => {
@@ -5,7 +6,7 @@ const Header = () => {
     <header className='flex justify-between p-5 max-w-7xl mx-auto'>
         <div className='flex item-center space-x-5'>
             <Link href='/'>
-                <img 
+                <Image 
                     src='/'
                     className='w-44 object-contain cursor-pointer'
                     alt=''
