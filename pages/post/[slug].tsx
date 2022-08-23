@@ -46,7 +46,7 @@ function Post({ post }: Props) {
     <main>
         <Header />
 
-        <Image 
+        <img
             className='w-full h-40 object-cover' 
             src={urlFor(post.mainImage).url()!} 
             alt=""
@@ -55,7 +55,7 @@ function Post({ post }: Props) {
             <h1 className='text-3xl mt-10 mb-3'>{post.title}</h1>
             <h2 className='text-xl font-light text-gray-500 mb-2'>{post.description}</h2>
             <div className='flex items-center space-x-2'>
-                <Image 
+                <img 
                     className='h-10 w-10 rounded-full'
                     src={urlFor(post.author.image).url()!} 
                     alt=''

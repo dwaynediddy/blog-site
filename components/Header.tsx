@@ -9,7 +9,8 @@ const Header = () => {
             <Link href='/'>
                 <Image 
                     src={Logo}
-                    layout='fill'
+                    width={150}
+                    height={70}
                     className='w-44 object-contain cursor-pointer'
                     alt=''
                 />

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import Barney from './barney.png'
 
 function Banner() {
   return (
@@ -12,10 +13,10 @@ function Banner() {
                 {" "}
                 Blogs are going to be Legen, wait for it... dary! LEGENDARY
              </h1>
-            <h2>A spoof of Barney 'The Barnicle' Stinsons blogs from HIMYM</h2>
+            <h2>Inspired by Barney 'The Barnicle' Stinsons blogs from HIMYM</h2>
         </div>
         <div className='hidden md:inline-flex h-32 lg:h-full'>
-            <Image src="https://tse2.mm.bing.net/th?id=OIP.bZN5HtF8nf_eo2hMdtWPlgHaGr&pid=Api&P=0" layout='fill' alt='' />
+            <Image src={Barney} height={500} width={500} alt='' />
         </div>
     </div>
   )
