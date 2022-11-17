@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import Barney from './barney.png'
+import Barney from './barney.avif'
 
 function Banner() {
   return (
